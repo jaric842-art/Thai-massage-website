@@ -2,47 +2,48 @@
    MASSAGES — Koya Thai Massage
    Design: Tab-based layout — knoppen bovenaan, één kaart zichtbaar
    Compact, overzichtelijk, luxe
+   60 / 90 / 120 minuten alleen
    ============================================================ */
 
 import { useEffect, useRef, useState } from "react";
 
 const massages = [
   {
-    name: "Thaise traditionele massage",
+    name: "Traditionele Thaise Massage",
     shortName: "Thaise massage",
     description:
       "De klassieke Thaise massage werkt op energiebanen en spieren voor diepe ontspanning. Door een combinatie van drukpunten, stretching en ritmische bewegingen wordt spanning losgelaten en de energiestroom hersteld.",
-    icon: "🌿",
+    icon: "🧘",
     prices: [
-      { duration: "60 min", price: "€ 60" },
-      { duration: "90 min", price: "€ 85" },
-      { duration: "120 min", price: "€ 110" },
+      { duration: "60 min", price: "€60" },
+      { duration: "90 min", price: "€90" },
+      { duration: "120 min", price: "€115" },
     ],
     featured: false,
   },
   {
-    name: "Aroma olie massage",
+    name: "Aroma Olie Massage",
     shortName: "Aroma olie",
     description:
       "Zachte, vloeiende bewegingen met geurige essentiële oliën voor totale ontspanning van lichaam en geest. De warme oliën dringen diep in de huid en laten u heerlijk geurig achter.",
-    icon: "🕯️",
+    icon: "🌸",
     prices: [
-      { duration: "60 min", price: "€ 60" },
-      { duration: "90 min", price: "€ 85" },
-      { duration: "120 min", price: "€ 110" },
+      { duration: "60 min", price: "€60" },
+      { duration: "90 min", price: "€90" },
+      { duration: "120 min", price: "€115" },
     ],
     featured: false,
   },
   {
-    name: "Rug-, nek- & schoudermassage",
+    name: "Rug-, Nek- & Schoudermassage",
     shortName: "Rug & nek",
     description:
       "Gerichte behandeling van de meest gespannen zones voor directe verlichting. Ideaal voor mensen met een zittend beroep of chronische spanning in de bovenrug en nek.",
-    icon: "✦",
+    icon: "🤝",
     prices: [
-      { duration: "60 min", price: "€ 60" },
-      { duration: "90 min", price: "€ 85" },
-      { duration: "120 min", price: "€ 110" },
+      { duration: "60 min", price: "€60" },
+      { duration: "90 min", price: "€90" },
+      { duration: "120 min", price: "€115" },
     ],
     featured: false,
   },
@@ -53,58 +54,57 @@ const massages = [
       "Intensieve massage voor sporters en actieve mensen, gericht op spierherstel en het voorkomen van blessures. Verhoogt de doorbloeding en versnelt het herstelproces na inspanning.",
     icon: "⚡",
     prices: [
-      { duration: "60 min", price: "€ 65" },
-      { duration: "90 min", price: "€ 90" },
-      { duration: "120 min", price: "€ 115" },
+      { duration: "60 min", price: "€65" },
+      { duration: "90 min", price: "€95" },
+      { duration: "120 min", price: "€120" },
     ],
     featured: false,
+  },
+  {
+    name: "Hot Stone Massage",
+    shortName: "Hot stone",
+    description:
+      "Verwarmde vulkanische stenen ontspannen de diepste spierlagen. De stenen worden langs energiebanen geplaatst en bewogen, wat zorgt voor een uniek gevoel van warmte en diepe rust.",
+    icon: "🪨",
+    prices: [
+      { duration: "90 min", price: "€100" },
+      { duration: "120 min", price: "€125" },
+    ],
+    featured: true,
+  },
+  {
+    name: "Kruidenstempel Massage",
+    shortName: "Kruidenstempel",
+    description:
+      "Warme kruidenstempels gevuld met aromatische Thai kruiden worden op het lichaam gedrukt voor diepe warmte en ontspanning. Een ware verwenbehandeling met een authentieke Thaise touch.",
+    icon: "🌿",
+    prices: [
+      { duration: "90 min", price: "€100" },
+      { duration: "120 min", price: "€125" },
+    ],
+    featured: true,
   },
   {
     name: "Kindermassage",
     shortName: "Kindermassage",
     description:
       "Zachte, ontspannende massage speciaal afgestemd op kinderen. Bevordert een goede nachtrust, vermindert stress en versterkt het lichaamsbesef op een veilige, speelse manier.",
-    icon: "🌸",
+    icon: "👶",
     prices: [
-      { duration: "60 min", price: "€ 40" },
-      { duration: "90 min", price: "€ 60" },
-      { duration: "120 min", price: "€ 80" },
+      { duration: "60 min", price: "€50" },
+      { duration: "90 min", price: "€70" },
+      { duration: "120 min", price: "€95" },
     ],
     featured: false,
   },
   {
-    name: "Thaise kruidenstempelmassage",
-    shortName: "Kruidenstempel",
-    description:
-      "Warme kruidenstempels gevuld met aromatische Thai kruiden worden op het lichaam gedrukt voor diepe warmte en ontspanning. Een ware verwenbehandeling met een authentieke Thaise touch.",
-    icon: "🌺",
-    prices: [
-      { duration: "90 min", price: "€ 100" },
-      { duration: "120 min", price: "€ 125" },
-    ],
-    featured: true,
-  },
-  {
-    name: "Hot stone massage",
-    shortName: "Hot stone",
-    description:
-      "Verwarmde vulkanische stenen ontspannen de diepste spierlagen. De stenen worden langs energiebanen geplaatst en bewogen, wat zorgt voor een uniek gevoel van warmte en diepe rust.",
-    icon: "🪨",
-    prices: [
-      { duration: "90 min", price: "€ 100" },
-      { duration: "120 min", price: "€ 125" },
-    ],
-    featured: true,
-  },
-  {
-    name: "Body scrub + aroma olie massage",
+    name: "Aroma Olie Massage + Bodyscrub",
     shortName: "Body scrub",
     description:
       "Een complete verwenbehandeling: een zachte scrub verwijdert dode huidcellen voor een stralende huid, gevolgd door een diepe aroma olie massage. Het ultieme moment van zelfzorg.",
     icon: "✨",
     prices: [
-      { duration: "90 min", price: "€ 100" },
-      { duration: "120 min", price: "€ 125" },
+      { duration: "120 min", price: "€135" },
     ],
     featured: true,
   },
@@ -417,3 +417,4 @@ export default function Massages() {
     </section>
   );
 }
+
